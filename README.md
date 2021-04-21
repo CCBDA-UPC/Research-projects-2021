@@ -21,7 +21,7 @@ To have more variety on the topics covered, *please contact your teacher before 
 
 Groups of two people need to create a folder in their project repo named "research" and then a  `"/research/tutorial/README.md"` file with the explanations, images, pieces of code, etc. similar to the ones used for your laboratory sessions.
 
-The **two remaining** team members will be randomly assigned two tutorials elaborated by some other teams. They will need to follow the tutorial and submit evidence of their job in `"/research/response1/README.md"` and `"/research/response2/README.md"` including **feedback for the authors** and **their grade** on how well elaborated and interesting they find it.
+The **two remaining** team members will be assigned the two tutorials elaborated by the other teams. They will need to follow the tutorial and submit evidence of their job in `"/research/response1/README.md"` and `"/research/response2/README.md"` including **feedback for the authors** and **their grade** on how well elaborated and interesting they find it.
 
 Add a file `"/research/authors.json"` 
 
