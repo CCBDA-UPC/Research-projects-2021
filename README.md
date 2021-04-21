@@ -57,8 +57,9 @@ NOTE: please update the file `"/research/authors.json"`  as stated above.
 
 ## Deadlines
 
-- For the tutorial creation May 11th 2020
-- For the tutorial responses June 1st 2020
+- For the tutorial documentation presentation May 9th 2021
+- For the tutorial evaluation and feedback May 16th 2021
+
 
 
 
