@@ -21,6 +21,8 @@ docker run hello-world
 ```
 This command downloads the `hello-world` image from Docker's servers and runs it in a container. This example is pretty simple, it just prints a message.
 
+![hello world output](./images/run_helloworld.PNG)
+
 Run `docker images` to see what images are stored on your computer. 
 
 
@@ -65,6 +67,10 @@ docker build -t example-app .
 ```
 This will create a image called "example-app" using the Dockerfile in the current directory.
 
+You can see the image in docker desktop's images tab on windows or using `docker image ls`:
+
+![images tab](./images/docker_images.PNG)
+
 ### Running our image locally
 To run our image locally we need to use the following command:
 
@@ -75,7 +81,11 @@ With this command we will run a container called `example-app-container`, with p
 
 If the command works properly you should be able to access your app [here](http://localhost/)!
 
-**Question: Try running the previous command with the -d option and without it and see what hapens.**
+You can also see the container running on docker desktop's containers tab on windows or using `docker container ls`:
+
+![docker container tab](./images/running_container.PNG)
+
+**Question: Try running the previous command with the -d option and without it and explain what happens.**
 Note: you will have to delete the container to launch a new one with the same name.
 
 ## Use our docker image in AWS
@@ -90,12 +100,19 @@ eb init
 ```
 You can leave all options to default and the output should look something like this:
 
+![eb init output](./images/eb_init.PNG)
+
 Then we can create our elastic beanstalk with this command:
 ```
 eb create
 ```
 Leaving all options to default should have an output like this:
 
+![eb create output](./images/eb_create.PNG)
+
 Then in a few minutes you should be able to navigate to the elastic beanstalk dashboard and see a new environment which contains your app running in the cloud.
 
-<font size="5">We hope you enjoyed the tutorial and hopefully learned something new!</font>
+![eb dashboard](./images/eb_dashboard.PNG)
+
+## The end!
+We hope you enjoyed the tutorial and hopefully learned something new!
