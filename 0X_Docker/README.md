@@ -17,27 +17,85 @@ Follow [these instructions](https://docs.docker.com/engine/install/) to install 
 To get acquianted with Docker, run:
 
 ```
-sudo docker run hello-world
+docker run hello-world
 ```
 This command downloads the `hello-world` image from Docker's servers and runs it in a container. This example is pretty simple, it just prints a message.
 
-Run `sudo docker images` to see what images are stored on your computer. 
+Run `docker images` to see what images are stored on your computer. 
 
 
 ## Create your own image
+To create our own image we will download a sample node project. You don't even need node installed for this tutorial, this is the power of Docker.
 
-Crete an empty text file and call it `Dockerfile`.
+We will clone [this repo](https://github.com/Guillembonet/node-example-app) which contains a sample hello world node app with a Dockerfile.
 
-`Dockerfile` follows a simple format: `INSTRUCTION arguments` and it must begin with `FROM`, which specifies the base image of your new image. We will use the latest version of the Ubuntu image.
+### Understanding the Dockerfile
+The dockerfile has the following directives:
 
 ```
-FROM ubuntu:latest
+FROM node:14
 ```
+This directive establishes node as the base image of our image.
 
-Now, add 
+```
+WORKDIR /app
 
-Run `docker build -t testimage:1.0 -f [/path/to/Dockerfile]` to build the image. The image has now the name `testimage` and tag (version) `1.0`.
+COPY package*.json ./
+RUN npm install
+```
+With these lines we create a working directory and copy the package.json (which contains our dependencies) to the working directory.
+With RUN npm install we install this dependencies.
 
-## Configure AWS
+```
+COPY . .
+```
+We copy all the files from our folder to the working directory (except the folders specified in .dockerignore)
 
-## Deploy your image to AWS
+```
+EXPOSE 3000
+CMD [ "node", "app.js" ]
+```
+We expose port 3000 (which is set by default in app.js), and we set `node app.js` to be the first command our image will run, which deploys the node app.
+
+### Building the image
+To build our image we will use the following command inside of the root folder of our sample app:
+
+```
+docker build -t example-app .
+```
+This will create a image called "example-app" using the Dockerfile in the current directory.
+
+### Running our image locally
+To run our image locally we need to use the following command:
+
+```
+docker run --name example-app-container -p 80:3000 -d example-app
+```
+With this command we will run a container called `example-app-container`, with port 3000 of the container mapped to the port 80 of the host machine, and the container will use our image and run in detached mode.
+
+If the command works properly you should be able to access your app [here](http://localhost/)!
+
+**Question: Try running the previous command with the -d option and without it and see what hapens.**
+Note: you will have to delete the container to launch a new one with the same name.
+
+## Use our docker image in AWS
+Now that we have a docker image we can upload it into AWS and make our app run in the cloud.
+### Deploy your image to AWS
+To deploy our image we will use the eb CLI we used in previous tutorials to create an elastic beanstalk environment with our application.
+
+Simply navigate to the root of the project and use:
+
+```
+eb init
+```
+You can leave all options to default and the output should look something like this:
+
+Then we can create our elastic beanstalk with this command:
+```
+eb create
+```
+Leaving all options to default should have an output like this:
+
+Then in a few minutes you should be able to navigate to the elastic beanstalk dashboard and see a new environment which contains your app running in the cloud.
+
+<font size="5">We hope you enjoyed the tutorial and hopefully learned something new!</font>
