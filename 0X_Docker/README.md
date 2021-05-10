@@ -2,7 +2,7 @@
 
 This is a simple tutorial, where the basics of Docker will be introduced to you. 
 
-In this tutorial, you will create a small app that 
+In this tutorial, you will create a sample Hello World web app that will be deployed to AWS using elastic beanstalk. 
 
 ## What is Docker?
 [Docker](https://www.docker.com/) is an open-source tool which provides virtualization on OS level. It uses reusable *containers* to make it more convenient to qucikly and consistently deploy and run applications.
