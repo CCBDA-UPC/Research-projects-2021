@@ -27,9 +27,9 @@ Run `docker images` to see what images are stored on your computer.
 
 
 ## Create your own image
-To create our own image we will download a sample node project. You don't even need node installed for this tutorial, this is the power of Docker.
+To create our own image we will use a sample node project. You don't even need node installed for this tutorial, this is the power of Docker.
 
-We will clone [this repo](https://github.com/Guillembonet/node-example-app) which contains a sample hello world node app with a Dockerfile.
+We will navigate to [this project](./code/node-example-app) which contains a sample hello world node app with a Dockerfile.
 
 ### Understanding the Dockerfile
 The dockerfile has the following directives:
@@ -116,3 +116,5 @@ Then in a few minutes you should be able to navigate to the elastic beanstalk da
 
 ## The end!
 We hope you enjoyed the tutorial and hopefully learned something new!
+
+![that's all](./images/thats_all.jpg)
