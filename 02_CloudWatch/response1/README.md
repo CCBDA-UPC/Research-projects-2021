@@ -24,7 +24,7 @@ we will get a notification about it via email.
 
 ![SNS](img/sns.png "SNS")
 
-Next we had to create an alarm. We chose one that was easy to trigger - the EC2 input or output packets, which can trigger the alarm just by connecting. 
+Next we had to create an alarm. We chose one that was easy to trigger - the EC2 input or output packets, it can trigger the alarm just by an attempt to connect to the instance. 
 We specified alarm conditions and chose previously created notification option. We waited until alarm was triggered and received a corresponding email. 
 
 ![Alarm](img/alarm.png "Alarm")
@@ -77,8 +77,7 @@ Finally, we could trigger an event (stop an instance) and an instance was automa
 
 ![Restart](img/restart.png "Restart")
 
-Now we had to use a composite alarm for reboot: once composite alarm is triggered, we receive an email, lambda is triggered and stops instance  
-and then CloudWatch event calls another lambda to start an instance again. Thus, we created new lambda with the same policy attached and with the following code
+Now we had to use a composite alarm for reboot: once composite alarm is triggered, we receive an email, lambda is triggered and stops instance and then CloudWatch event calls another lambda to start an instance again. Thus, we created new lambda with the same policy attached and with the following code
 
 ```
 import boto3
